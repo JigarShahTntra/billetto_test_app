@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def check_clerk_user
-    unless action_name.eql?("index") || clerk_user_signed_in?
+    unless action_name.eql?("index") || request.env["clerk"].present?
       redirect_to Rails.application.credentials.dig(:clerk, :sign_in_url), allow_other_host: true
     end
   end

@@ -22,8 +22,6 @@ gem "rails_event_store"  # Event-driven architecture
 gem "clerk-sdk-ruby", require: "clerk" # Authentication
 gem "httparty"           # For API integration
 gem "sidekiq"            # Background jobs
-gem "rspec-rails"        # Testing framework
-gem "pry"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -42,7 +40,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
+  gem "pry"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
@@ -57,6 +55,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "rspec-rails"        # Testing framework
+  gem 'shoulda-matchers'
   gem "capybara"
   gem "selenium-webdriver"
 end
