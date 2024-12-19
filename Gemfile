@@ -18,7 +18,12 @@ gem "stimulus-rails"
 gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
-
+gem "rails_event_store"  # Event-driven architecture
+gem "clerk-sdk-ruby", require: "clerk" # Authentication
+gem "httparty"           # For API integration
+gem "sidekiq"            # Background jobs
+gem "rspec-rails"        # Testing framework
+gem "pry"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

@@ -1,0 +1,11 @@
+<% @events.each do |event| %>
+  <div>
+    <h2><%= event.title %></h2>
+    <p><%= event.description %></p>
+    <p>Date: <%= event.date %></p>
+    <p>Upvotes: <%= VoteCount.find_by(event_id: event.id)&.upvotes || 0 %></p>
+    <p>Downvotes: <%= VoteCount.find_by(event_id: event.id)&.downvotes || 0 %></p>
+    <%= button_to 'Upvote', upvote_event_path(event.id), method: :post, data: { turbo: false }  %>
+    <%= button_to 'Downvote', downvote_event_path(event.id), method: :post, data: { turbo: false } %>
+  </div>
+<% end %>
