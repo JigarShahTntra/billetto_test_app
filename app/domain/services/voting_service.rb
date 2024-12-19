@@ -14,13 +14,15 @@ class VotingService
 
   def upvote(command)
     Rails.configuration.event_store.publish(
-      EventUpvoted.new(data: { event_id: command.event_id, user_id: command.user_id })
+      EventUpvoted.new(data: { event_id: command.event_id, user_id: command.user_id }),
+      stream_name: "Event-#{command.event_id}-Upvoted"
     )
   end
 
   def downvote(command)
     Rails.configuration.event_store.publish(
-      EventDownvoted.new(data: { event_id: command.event_id, user_id: command.user_id })
+      EventDownvoted.new(data: { event_id: command.event_id, user_id: command.user_id }),
+      stream_name: "Event-#{command.event_id}-Downvoted"
     )
   end
 end

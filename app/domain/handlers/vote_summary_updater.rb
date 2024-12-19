@@ -6,5 +6,6 @@ class VoteSummaryUpdater
     elsif event.is_a?(EventDownvoted)
       vote_count.increment!(:downvotes)
     end
+    vote_count.save!
   end
 end
